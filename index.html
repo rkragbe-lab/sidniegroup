@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sidnie Group — Négoce &amp; Transport de Matières Premières Africaines</title>
+<meta name="description" content="Sidnie Group — Votre partenaire de confiance en négoce international et transport de matières premières africaines. Beurre de karité, cacao, anacarde, minéraux et plus.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green-dark: #0D3D2B;
+  --green-main: #1A6B47;
+  --green-mid: #2D8B5E;
+  --green-light: #E8F5EE;
+  --green-pale: #F2FAF6;
+  --gold: #C4922A;
+  --gold-light: #F0C660;
+  --gold-pale: #FDF8EC;
+  --text: #111816;
+  --text-mid: #3D5047;
+  --text-light: #6B7D73;
+  --white: #FFFFFF;
+  --border: #DDE8E2;
+  --cream: #FAFDF9;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 400; background: var(--cream); color: var(--text); overflow-x: clip; }
+
+/* NAV */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:200;
+  padding: 16px 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: all 0.35s ease;
+}
+nav.scrolled {
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(16px);
+  padding: 10px 64px;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 24px rgba(13,61,43,0.07);
+}
+.nav-logo { display: flex; align-items: center; text-decoration: none; }
+.nav-logo-wrap { background: rgba(255,255,255,0.92); border-radius: 8px; padding: 3px 8px; display:flex; align-items:center; transition: background 0.3s, padding 0.3s; }
+nav.scrolled .nav-logo-wrap { background: transparent; padding: 0; }
+.nav-logo img { height: 48px; width: auto; display:block; }
+.nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+.nav-links a { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.85); text-decoration: none; transition: color 0.3s; }
+nav.scrolled .nav-links a { color: var(--text-mid); }
+.nav-links a:hover { color: var(--gold) !important; }
+.nav-right { display: flex; align-items: center; gap: 14px; }
+.lang-toggle { display: flex; gap: 3px; background: rgba(255,255,255,0.15); border-radius: 20px; padding: 3px; }
+nav.scrolled .lang-toggle { background: var(--green-light); }
+.lang-btn { font-size: 11px; font-weight: 600; letter-spacing: 1px; padding: 5px 11px; border-radius: 16px; border: none; cursor: pointer; color: rgba(255,255,255,0.7); background: transparent; font-family: 'Plus Jakarta Sans', sans-serif; transition: all 0.2s; }
+nav.scrolled .lang-btn { color: var(--text-light); }
+.lang-btn.active { background: var(--gold); color: white !important; }
+.nav-cta { padding: 9px 20px; background: var(--gold); color: white; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; border: none; cursor: pointer; border-radius: 4px; font-family: 'Plus Jakarta Sans', sans-serif; text-decoration: none; display: inline-block; transition: all 0.2s; }
+.nav-cta:hover { background: var(--green-main); }
+
+/* HAMBURGER */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: white; border-radius: 2px; transition: all 0.3s; }
+nav.scrolled .hamburger span { background: var(--green-dark); }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* MOBILE MENU */
+.mobile-menu {
+  display: none; position: fixed; inset: 0; z-index: 199;
+  background: var(--green-dark); flex-direction: column;
+  align-items: center; justify-content: center; gap: 28px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-size: 20px; font-weight: 600; color: rgba(255,255,255,0.85); text-decoration: none; transition: color 0.2s; }
+.mobile-menu a:hover { color: var(--gold-light); }
+.mobile-menu .mob-cta { background: var(--gold); padding: 13px 36px; border-radius: 4px; color: white !important; margin-top: 8px; }
+.mobile-lang { display: flex; gap: 6px; background: rgba(255,255,255,0.1); border-radius: 20px; padding: 4px; margin-top: 8px; }
+
+/* HERO */
+#hero { height: 100vh; height: 100dvh; min-height: 640px; position: relative; display: flex; align-items: center; overflow: hidden; }
+.hero-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--green-dark) 0%, #1A5C38 40%, #2A6B3C 100%);
+}
+.hero-pattern {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(circle at 70% 50%, rgba(196,146,42,0.12) 0%, transparent 60%), radial-gradient(circle at 20% 80%, rgba(255,255,255,0.04) 0%, transparent 40%);
+}
+.hero-img {
+  position: absolute; right: 0; top: 0; bottom: 0; width: 52%;
+  background: url('https://images.pexels.com/photos/14005602/pexels-photo-14005602.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover;
+  clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%);
+  opacity: 0.35;
+}
+.hero-content { position: relative; z-index: 2; padding: 0 64px; max-width: 700px; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(196,146,42,0.2); border: 1px solid rgba(196,146,42,0.4); border-radius: 20px; padding: 6px 16px; margin-bottom: 28px; }
+.hero-badge span { font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-light); }
+.hero-title { font-family: 'Fraunces', serif; font-size: clamp(26px, 3.2vw, 46px); font-weight: 400; line-height: 1.1; color: white; margin-bottom: 24px; }
+.hero-title em { font-style: italic; color: var(--gold-light); }
+.hero-sub { font-size: 16px; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,0.75); margin-bottom: 44px; max-width: 500px; }
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-green { padding: 15px 32px; background: var(--green-main); color: white; font-size: 13px; font-weight: 600; text-decoration: none; border: none; cursor: pointer; border-radius: 4px; transition: all 0.25s; font-family: 'Plus Jakarta Sans', sans-serif; display: inline-block; }
+.btn-green:hover { background: var(--green-mid); transform: translateY(-1px); }
+.btn-ghost { padding: 15px 32px; background: transparent; color: white; font-size: 13px; font-weight: 600; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.45); cursor: pointer; border-radius: 4px; transition: all 0.25s; font-family: 'Plus Jakarta Sans', sans-serif; display: inline-block; }
+.btn-ghost:hover { border-color: white; background: rgba(255,255,255,0.08); }
+.hero-stats { position: absolute; bottom: 0; left: 0; right: 0; z-index: 2; background: rgba(13,61,43,0.7); backdrop-filter: blur(8px); display: flex; }
+.hero-stat { flex: 1; padding: 22px 28px; border-right: 1px solid rgba(255,255,255,0.1); text-align: center; }
+.hero-stat:last-child { border-right: none; }
+.stat-n { font-family: 'Fraunces', serif; font-size: 30px; font-weight: 400; color: var(--gold-light); line-height: 1; }
+.stat-l { font-size: 11px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-top: 4px; }
+.scroll-ind { position: absolute; bottom: 90px; left: 64px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.5)); animation: scrollAnim 2s ease-in-out infinite; }
+@keyframes scrollAnim { 0%,100%{opacity:0.4;height:36px} 50%{opacity:1;height:52px} }
+.scroll-txt { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); writing-mode: vertical-rl; }
+
+/* ABOUT */
+#about { padding: 100px 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; background: white; }
+.about-img-wrap { position: relative; }
+.about-img { width: 100%; height: 520px; object-fit: cover; border-radius: 4px; }
+.about-float { position: absolute; bottom: -24px; right: -24px; background: var(--green-dark); padding: 28px 32px; border-radius: 4px; }
+.af-num { font-family: 'Fraunces', serif; font-size: 44px; font-weight: 400; color: var(--gold-light); line-height: 1; }
+.af-lbl { font-size: 11px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-top: 6px; }
+.section-pre { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green-main); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+.section-pre::before { content:''; display:block; width:20px; height:2px; background: var(--green-main); border-radius:2px; }
+.section-h { font-family: 'Fraunces', serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 400; line-height: 1.15; color: var(--green-dark); margin-bottom: 20px; }
+.section-h em { font-style: italic; color: var(--gold); }
+.about-p { font-size: 15px; line-height: 1.85; color: var(--text-light); margin-bottom: 16px; }
+.about-vals { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+.val { background: var(--green-pale); border-radius: 8px; padding: 18px 20px; border-left: 3px solid var(--green-main); }
+.val-t { font-size: 13px; font-weight: 700; color: var(--green-dark); margin-bottom: 4px; }
+.val-d { font-size: 12px; color: var(--text-light); line-height: 1.5; }
+
+/* PRODUCTS */
+#products { padding: 100px 64px; background: var(--cream); }
+.products-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 52px; flex-wrap: wrap; gap: 24px; }
+.products-intro { max-width: 440px; font-size: 14px; line-height: 1.8; color: var(--text-light); }
+.prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.prod-card { background: white; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); cursor: pointer; transition: all 0.28s ease; position: relative; }
+.prod-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(13,61,43,0.12); border-color: var(--green-main); }
+.prod-card.featured { grid-column: span 2; border: 2px solid var(--gold); }
+.prod-card.featured::before { content: attr(data-badge); position: absolute; top: 16px; left: 16px; z-index: 5; background: var(--gold); color: white; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 3px; }
+.prod-img { width:100%; height: 220px; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.prod-card.featured .prod-img { height: 300px; }
+.prod-card:hover .prod-img { transform: scale(1.04); }
+.prod-body { padding: 20px; }
+.prod-cat { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green-main); margin-bottom: 8px; }
+.prod-name { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 600; color: var(--green-dark); margin-bottom: 8px; }
+.prod-card.featured .prod-name { font-size: 26px; }
+.prod-desc { font-size: 13px; line-height: 1.6; color: var(--text-light); margin-bottom: 14px; }
+.prod-origin { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-light); }
+.prod-origin::before { content:'◎'; color: var(--green-main); font-size: 11px; }
+.prod-card.featured .prod-more { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; color: var(--gold); margin-top: 12px; text-transform: uppercase; letter-spacing: 1px; }
+.prod-more-arrow { transition: transform 0.2s; }
+.prod-card.featured:hover .prod-more-arrow { transform: translateX(4px); }
+.prod-sur-demande { background: var(--green-pale); border: 1px dashed var(--border); border-radius: 8px; padding: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 140px; }
+.sur-demande-icon { font-size: 28px; margin-bottom: 10px; }
+.sur-demande-t { font-size: 14px; font-weight: 700; color: var(--green-dark); margin-bottom: 6px; }
+.sur-demande-d { font-size: 12px; color: var(--text-light); line-height: 1.5; }
+
+/* PRODUCT MODAL */
+#product-modal { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(13,61,43,0.92); backdrop-filter: blur(8px); overflow-y: auto; }
+#product-modal.open { display: flex; align-items: flex-start; justify-content: center; padding: 40px 20px; animation: fadeInModal 0.35s ease; }
+@keyframes fadeInModal { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+.modal-box { background: white; width: 100%; max-width: 1000px; border-radius: 12px; overflow: hidden; position: relative; }
+.modal-close { position: absolute; top: 20px; right: 20px; z-index: 10; width: 40px; height: 40px; border-radius: 50%; background: var(--green-pale); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--green-dark); transition: all 0.2s; }
+.modal-close:hover { background: var(--green-light); }
+.modal-hero { height: 320px; position: relative; overflow: hidden; }
+.modal-hero img { width:100%; height:100%; object-fit: cover; }
+.modal-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(13,61,43,0.85) 0%, rgba(13,61,43,0.4) 60%, transparent 100%); display: flex; align-items: flex-end; padding: 40px; }
+.modal-hero-text { color: white; }
+.modal-hero-tag { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 10px; }
+.modal-hero-title { font-family: 'Fraunces', serif; font-size: 42px; font-weight: 400; line-height: 1.1; }
+.modal-hero-title em { font-style: italic; color: var(--gold-light); }
+.modal-body { padding: 48px; }
+.modal-intro { font-size: 16px; line-height: 1.85; color: var(--text-light); margin-bottom: 40px; max-width: 700px; }
+.modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+.modal-block-title { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green-main); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.modal-block-title::before { content:''; display:block; width:16px; height:2px; background: var(--green-main); border-radius:2px; }
+.modal-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.modal-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--text-mid); line-height: 1.5; }
+.modal-list li::before { content:'✓'; color: var(--green-main); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.certif-boxes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
+.certif-box { background: var(--green-pale); border: 1px solid var(--border); border-radius: 8px; padding: 20px; text-align: center; border-top: 3px solid var(--green-main); }
+.certif-box-name { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; color: var(--green-dark); margin-bottom: 6px; }
+.certif-box-desc { font-size: 12px; color: var(--text-light); line-height: 1.5; }
+.modal-markets { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+.mkt-chip { display: flex; align-items: center; gap: 8px; background: white; border: 1px solid var(--border); border-radius: 6px; padding: 10px 16px; font-size: 13px; font-weight: 600; color: var(--green-dark); }
+.modal-cta-bar { background: var(--green-dark); border-radius: 8px; padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+.modal-cta-text { color: white; }
+.modal-cta-text h3 { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 400; margin-bottom: 6px; }
+.modal-cta-text p { font-size: 14px; color: rgba(255,255,255,0.65); }
+.modal-cta-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-gold { padding: 13px 28px; background: var(--gold); color: white; font-size: 13px; font-weight: 700; text-decoration: none; border: none; cursor: pointer; border-radius: 4px; font-family: 'Plus Jakarta Sans', sans-serif; transition: all 0.2s; display: inline-block; }
+.btn-gold:hover { background: var(--gold-light); color: var(--green-dark); }
+.btn-white-outline { padding: 13px 28px; background: transparent; color: white; font-size: 13px; font-weight: 600; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 4px; font-family: 'Plus Jakarta Sans', sans-serif; transition: all 0.2s; display: inline-block; }
+.btn-white-outline:hover { border-color: white; background: rgba(255,255,255,0.08); }
+
+/* SERVICES */
+#services { padding: 100px 64px; background: var(--green-dark); }
+#services .section-pre { color: var(--gold-light); }
+#services .section-pre::before { background: var(--gold-light); }
+#services .section-h { color: white; }
+.services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 52px; }
+.service-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 40px; transition: all 0.3s; }
+.service-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-4px); }
+.svc-icon { width: 52px; height: 52px; background: var(--green-main); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 24px; }
+.svc-title { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 600; color: white; margin-bottom: 14px; }
+.svc-desc { font-size: 14px; line-height: 1.8; color: rgba(255,255,255,0.6); margin-bottom: 20px; }
+.svc-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.svc-list li { font-size: 13px; color: rgba(255,255,255,0.7); display: flex; gap: 8px; align-items: flex-start; }
+.svc-list li::before { content:'→'; color: var(--gold-light); font-size: 12px; margin-top: 1px; flex-shrink: 0; }
+
+/* PROCESS */
+#process { padding: 100px 64px; background: white; }
+.process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 60px; position: relative; }
+.process-steps::before { content:''; position: absolute; top: 28px; left: 12.5%; right: 12.5%; height: 1px; background: var(--border); }
+.proc-step { padding: 0 24px; text-align: center; }
+.proc-num { width: 56px; height: 56px; border-radius: 50%; background: var(--green-main); color: white; font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; position: relative; z-index: 1; }
+.proc-title { font-size: 15px; font-weight: 700; color: var(--green-dark); margin-bottom: 10px; }
+.proc-desc { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+
+/* WHY US */
+#why { padding: 100px 64px; background: var(--cream); }
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 52px; }
+.why-card { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 32px; position: relative; overflow: hidden; transition: all 0.3s; }
+.why-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(13,61,43,0.08); border-color: var(--green-main); }
+.why-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--green-main); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+.why-card:hover::after { transform: scaleX(1); }
+.why-icon { width: 48px; height: 48px; background: var(--green-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 20px; }
+.why-title { font-size: 16px; font-weight: 700; color: var(--green-dark); margin-bottom: 10px; }
+.why-desc { font-size: 13px; color: var(--text-light); line-height: 1.7; }
+
+/* TESTIMONIALS */
+#testimonials { padding: 100px 64px; background: var(--green-pale); }
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 52px; }
+.testi-card { background: white; border-radius: 8px; padding: 32px; border: 1px solid var(--border); }
+.testi-stars { color: var(--gold); font-size: 16px; margin-bottom: 16px; }
+.testi-text { font-size: 14px; font-style: italic; line-height: 1.8; color: var(--text-mid); margin-bottom: 24px; }
+.testi-author { display: flex; align-items: center; gap: 14px; }
+.testi-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--green-main); color: white; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; flex-shrink: 0; }
+.testi-name { font-size: 14px; font-weight: 700; color: var(--green-dark); }
+.testi-role { font-size: 12px; color: var(--text-light); }
+
+/* CONTACT */
+#contact { padding: 100px 64px; background: white; display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
+.contact-info .section-h { margin-bottom: 16px; }
+.contact-info-p { font-size: 15px; line-height: 1.85; color: var(--text-light); margin-bottom: 36px; }
+.contact-details { display: flex; flex-direction: column; gap: 18px; }
+.cd-item { display: flex; gap: 14px; align-items: flex-start; }
+.cd-icon { width: 42px; height: 42px; background: var(--green-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.cd-text strong { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--green-main); margin-bottom: 3px; }
+.cd-text a, .cd-text span { font-size: 14px; color: var(--text-mid); text-decoration: none; }
+.cd-text a:hover { color: var(--green-main); }
+.whatsapp-btn { display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: white; padding: 13px 24px; border-radius: 6px; font-size: 13px; font-weight: 700; text-decoration: none; margin-top: 24px; transition: all 0.2s; }
+.whatsapp-btn:hover { background: #1ebe58; transform: translateY(-2px); }
+.contact-form { display: flex; flex-direction: column; gap: 16px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fg { display: flex; flex-direction: column; gap: 6px; }
+.fg label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-light); }
+.fg input, .fg select, .fg textarea { background: var(--green-pale); border: 1px solid var(--border); border-radius: 6px; padding: 13px 16px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; color: var(--text); outline: none; transition: border-color 0.25s; width: 100%; }
+.fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--green-main); background: white; }
+.fg select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236B7D73' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px; }
+.fg textarea { resize: vertical; min-height: 100px; }
+.btn-submit { padding: 16px 40px; background: var(--green-main); color: white; font-size: 13px; font-weight: 700; border: none; cursor: pointer; border-radius: 6px; font-family: 'Plus Jakarta Sans', sans-serif; transition: all 0.25s; align-self: flex-start; }
+.btn-submit:hover { background: var(--green-dark); transform: translateY(-1px); }
+.form-success { display: none; background: var(--green-pale); border: 1px solid var(--green-main); border-radius: 6px; padding: 18px 20px; color: var(--green-dark); font-size: 14px; }
+
+/* FOOTER */
+footer { background: var(--green-dark); padding: 52px 64px 32px; }
+.footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.footer-logo img { height: 52px; width: auto; }
+.footer-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.8; margin-top: 14px; max-width: 260px; }
+.footer-col-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 18px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold-light); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+/* ANIMATIONS */
+.fade-up { opacity:0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-up.vis { opacity:1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  nav { padding: 14px 24px; }
+  nav.scrolled { padding: 10px 24px; }
+  .nav-links, .nav-right { display: none; }
+  .hamburger { display: flex; }
+  #hero .hero-img { display: none; }
+  .hero-content { padding: 0 24px; max-width: 100%; }
+  .hero-stats { position: relative; }
+  .hero-stat { padding: 16px 12px; }
+  .stat-n { font-size: 22px; }
+  .scroll-ind { display: none; }
+  #about { padding: 64px 24px; grid-template-columns: 1fr; gap: 40px; }
+  .about-img { height: 340px; }
+  .about-float { bottom: -14px; right: -8px; }
+  #products { padding: 64px 24px; }
+  .prod-grid { grid-template-columns: 1fr 1fr; }
+  .prod-card.featured { grid-column: span 2; }
+  #services { padding: 64px 24px; }
+  .services-grid { grid-template-columns: 1fr; }
+  #process { padding: 64px 24px; }
+  .process-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .process-steps::before { display: none; }
+  #why { padding: 64px 24px; }
+  .why-grid { grid-template-columns: 1fr 1fr; }
+  #testimonials { padding: 64px 24px; }
+  .testi-grid { grid-template-columns: 1fr; }
+  #contact { padding: 64px 24px; grid-template-columns: 1fr; gap: 40px; }
+  footer { padding: 48px 24px 28px; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .modal-grid, .certif-boxes { grid-template-columns: 1fr; }
+  .modal-body { padding: 24px; }
+  .modal-hero-title { font-size: 28px; }
+  .modal-cta-bar { flex-direction: column; }
+}
+
+@media (max-width: 600px) {
+  .prod-grid { grid-template-columns: 1fr; }
+  .prod-card.featured { grid-column: span 1; }
+  .why-grid { grid-template-columns: 1fr; }
+  .about-vals { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+  .hero-stats { flex-wrap: wrap; }
+  .hero-stat { flex: 1 1 50%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .hero-btns { flex-direction: column; }
+  .hero-btns a { text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-wrap"><img src="images/logo.png" alt="Sidnie Group"></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about" data-fr="Qui sommes-nous" data-en="About us">Qui sommes-nous</a></li>
+    <li><a href="#products" data-fr="Nos produits" data-en="Our products">Nos produits</a></li>
+    <li><a href="#services" data-fr="Services" data-en="Services">Services</a></li>
+    <li><a href="#process" data-fr="Comment ça marche" data-en="How it works">Comment ça marche</a></li>
+    <li><a href="#testimonials" data-fr="Témoignages" data-en="Testimonials">Témoignages</a></li>
+    <li><a href="#contact" data-fr="Contact" data-en="Contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="#contact" class="nav-cta" data-fr="Nous contacter" data-en="Contact us">Nous contacter</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMob()" data-fr="Qui sommes-nous" data-en="About us">Qui sommes-nous</a>
+  <a href="#products" onclick="closeMob()" data-fr="Nos produits" data-en="Our products">Nos produits</a>
+  <a href="#services" onclick="closeMob()" data-fr="Services" data-en="Services">Services</a>
+  <a href="#process" onclick="closeMob()" data-fr="Comment ça marche" data-en="How it works">Comment ça marche</a>
+  <a href="#testimonials" onclick="closeMob()" data-fr="Témoignages" data-en="Testimonials">Témoignages</a>
+  <a href="#contact" onclick="closeMob()" class="mob-cta" data-fr="Nous contacter" data-en="Contact us">Nous contacter</a>
+  <div class="mobile-lang">
+    <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</div>
+
+<!-- PRODUCT MODAL (generic — populated by JS) -->
+<div id="product-modal" onclick="closeModalOut(event)">
+  <div class="modal-box" id="modal-box">
+    <button class="modal-close" onclick="closeProductModal()">✕</button>
+    <div class="modal-hero">
+      <img id="modal-img" src="" alt="">
+      <div class="modal-hero-overlay">
+        <div class="modal-hero-text">
+          <div id="modal-tag" class="modal-hero-tag"></div>
+          <h2 id="modal-title" class="modal-hero-title"></h2>
+        </div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <p id="modal-intro" class="modal-intro"></p>
+      <div class="modal-grid">
+        <div>
+          <div id="modal-specs-label" class="modal-block-title"></div>
+          <ul id="modal-specs-list" class="modal-list"></ul>
+        </div>
+        <div>
+          <div id="modal-adv-label" class="modal-block-title"></div>
+          <ul id="modal-adv-list" class="modal-list"></ul>
+        </div>
+      </div>
+      <div id="modal-certif-section">
+        <div id="modal-certif-label" class="modal-block-title"></div>
+        <div id="modal-certif-boxes" class="certif-boxes"></div>
+      </div>
+      <div id="modal-markets-label" class="modal-block-title"></div>
+      <div id="modal-markets" class="modal-markets"></div>
+      <div class="modal-cta-bar">
+        <div class="modal-cta-text">
+          <h3 id="modal-cta-title" style="font-family:'Fraunces',serif;font-size:24px;font-weight:400;margin-bottom:6px;color:white;"></h3>
+          <p id="modal-cta-desc" style="font-size:14px;color:rgba(255,255,255,0.65);"></p>
+        </div>
+        <div class="modal-cta-btns">
+          <a href="#contact" class="btn-gold" id="modal-sample-btn" onclick="closeProductModal()"></a>
+          <a href="https://wa.me/2250505660626" target="_blank" class="btn-white-outline" id="modal-wa-btn">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-img"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span data-fr="Abidjan, Côte d'Ivoire · Depuis 2014" data-en="African Commodities Trading &amp; Transport">Abidjan, Côte d'Ivoire · Depuis 2014</span></div>
+    <h1 class="hero-title" data-fr="Votre partenaire en&lt;br&gt;négoce &amp; transport de&lt;br&gt;&lt;em&gt;matières premières&lt;/em&gt;" data-en="Your partner in trade&lt;br&gt;&amp; transport of&lt;br&gt;&lt;em&gt;raw materials&lt;/em&gt;">Votre partenaire en<br>négoce &amp; transport de<br><em>matières premières</em></h1>
+    <p class="hero-sub" data-fr="Sidnie Group connecte les producteurs africains aux marchés mondiaux. Beurre de karité, cacao, anacarde, minéraux et plus — avec professionnalisme et intégrité." data-en="Sidnie Group connects African producers to global markets. Shea butter, cocoa, cashew, minerals and more — with professionalism and integrity.">Sidnie Group connecte les producteurs africains aux marchés mondiaux. Beurre de karité, cacao, anacarde, minéraux et plus — avec professionnalisme et intégrité.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-green" data-fr="Contactez-nous" data-en="Contact us">Contactez-nous</a>
+      <a href="#products" class="btn-ghost" data-fr="Découvrir nos produits" data-en="Discover our products">Découvrir nos produits</a>
+    </div>
+  </div>
+  <div class="scroll-ind"><div class="scroll-line"></div><span class="scroll-txt">Scroll</span></div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="stat-n">10+</div><div class="stat-l" data-fr="Ans d'expérience" data-en="Years experience">Ans d'expérience</div></div>
+    <div class="hero-stat"><div class="stat-n">500+</div><div class="stat-l" data-fr="Clients satisfaits" data-en="Satisfied clients">Clients satisfaits</div></div>
+    <div class="hero-stat"><div class="stat-n">8</div><div class="stat-l" data-fr="Produits principaux" data-en="Main products">Produits principaux</div></div>
+    <div class="hero-stat"><div class="stat-n">20+</div><div class="stat-l" data-fr="Pays desservis" data-en="Countries served">Pays desservis</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-img-wrap fade-up">
+    <img class="about-img" src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?w=800&q=80" alt="Équipe Sidnie Group">
+    <div class="about-float">
+      <div class="af-num">20+</div>
+      <div class="af-lbl" data-fr="Pays desservis" data-en="Countries served">Pays desservis</div>
+    </div>
+  </div>
+  <div class="fade-up">
+    <div class="section-pre" data-fr="Qui sommes-nous" data-en="About us">Qui sommes-nous</div>
+    <h2 class="section-h" data-fr="Excellence dans le&lt;br&gt;négoce de &lt;em&gt;matières premières&lt;/em&gt;" data-en="Excellence in &lt;em&gt;commodity&lt;/em&gt;&lt;br&gt;trading &amp; logistics">Excellence dans le<br>négoce de <em>matières premières</em></h2>
+    <p class="about-p" data-fr="Sidnie Group est une entreprise leader basée à Abidjan, spécialisée dans le négoce international et le transport de matières premières africaines de qualité supérieure. Nous connectons les producteurs africains aux marchés mondiaux avec professionnalisme et intégrité." data-en="Sidnie Group is a leading company based in Abidjan, specializing in international commodity trading and transport of high-quality African raw materials.">Sidnie Group est une entreprise leader basée à Abidjan, spécialisée dans le négoce international et le transport de matières premières africaines de qualité supérieure. Nous connectons les producteurs africains aux marchés mondiaux avec professionnalisme et intégrité.</p>
+    <p class="about-p" data-fr="Notre portefeuille couvre les matières premières agricoles — beurre de karité, poudre de cacao, poudre de baobab, anacarde — ainsi que les minéraux industriels : manganèse, coltan, sésame et autres produits sur demande. Pour chaque matière première, nous assurons la traçabilité, la certification et la logistique de bout en bout." data-en="Our portfolio covers agricultural commodities — shea butter, cocoa powder, baobab powder, cashew nuts — as well as industrial minerals: manganese, coltan, sesame and other products on request.">Notre portefeuille couvre les matières premières agricoles — beurre de karité, poudre de cacao, poudre de baobab, anacarde — ainsi que les minéraux industriels : manganèse, coltan, sésame et autres produits sur demande.</p>
+    <div class="about-vals">
+      <div class="val"><div class="val-t" data-fr="Expertise Locale" data-en="Local Expertise">Expertise Locale</div><div class="val-d" data-fr="Connaissance approfondie du marché africain et des réseaux de producteurs établis." data-en="Deep knowledge of the African market and established producer networks.">Connaissance approfondie du marché africain et des réseaux de producteurs établis.</div></div>
+      <div class="val"><div class="val-t" data-fr="Qualité Garantie" data-en="Guaranteed Quality">Qualité Garantie</div><div class="val-d" data-fr="Contrôle qualité strict à chaque étape. Certifications internationales." data-en="Strict quality control at every stage. International certifications.">Contrôle qualité strict à chaque étape. Certifications internationales.</div></div>
+      <div class="val"><div class="val-t" data-fr="Prix Compétitifs" data-en="Competitive Pricing">Prix Compétitifs</div><div class="val-d" data-fr="Sourcing direct sans intermédiaires. Les meilleurs prix du marché." data-en="Direct sourcing without intermediaries. Best market prices.">Sourcing direct sans intermédiaires. Les meilleurs prix du marché.</div></div>
+      <div class="val"><div class="val-t" data-fr="Transparence Totale" data-en="Full Transparency">Transparence Totale</div><div class="val-d" data-fr="Documentation complète et traçabilité de bout en bout sur chaque commande." data-en="Complete documentation and end-to-end traceability on every order.">Documentation complète et traçabilité de bout en bout sur chaque commande.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="products-head fade-up">
+    <div>
+      <div class="section-pre" data-fr="Nos produits" data-en="Our products">Nos produits</div>
+      <h2 class="section-h" data-fr="Matières premières africaines&lt;br&gt;de &lt;em&gt;qualité supérieure&lt;/em&gt;" data-en="African raw materials&lt;br&gt;of &lt;em&gt;superior quality&lt;/em&gt;">Matières premières africaines<br>de <em>qualité supérieure</em></h2>
+    </div>
+    <p class="products-intro" data-fr="8 produits principaux, 20+ pays desservis. Cliquez sur un produit pour découvrir les spécifications, certifications et marchés cibles." data-en="8 main products, 20+ countries served. Click on any product to discover specifications, certifications and target markets.">8 produits principaux, 20+ pays desservis. Cliquez sur un produit pour découvrir les spécifications, certifications et marchés cibles.</p>
+  </div>
+  <div class="prod-grid fade-up">
+    <!-- KARITÉ FEATURED -->
+    <div class="prod-card featured" data-badge="⭐ PRODUIT PHARE" onclick="openProductModal('karite')" title="Voir le détail">
+      <img class="prod-img" src="https://images.unsplash.com/photo-1732377448751-bb44ea81c5ac?w=800&q=80" alt="Beurre de Karité">
+      <div class="prod-body">
+        <div class="prod-cat" data-fr="Produits Naturels · COSMOS Organic · Fair Trade" data-en="Natural Products · COSMOS Organic · Fair Trade">Produits Naturels · COSMOS Organic · Fair Trade</div>
+        <div class="prod-name" data-fr="Beurre de Karité" data-en="Shea Butter">Beurre de Karité</div>
+        <p class="prod-desc" data-fr="Beurre de karité brut et raffiné, source directe d'Afrique de l'Ouest. Qualité premium pour l'industrie cosmétique et alimentaire. Certifié COSMOS Organic &amp; Fair for Life." data-en="Raw and refined shea butter, directly sourced from West Africa. Premium quality for the cosmetic and food industry.">Beurre de karité brut et raffiné, source directe d'Afrique de l'Ouest. Qualité premium pour l'industrie cosmétique et alimentaire. Certifié COSMOS Organic &amp; Fair for Life.</p>
+        <div class="prod-origin" data-fr="Afrique de l'Ouest · Burkina Faso · Ghana" data-en="West Africa · Burkina Faso · Ghana">Afrique de l'Ouest · Burkina Faso · Ghana</div>
+        <div class="prod-more"><span data-fr="Voir notre expertise karité" data-en="See our shea expertise">Voir notre expertise karité</span> <span class="prod-more-arrow">→</span></div>
+      </div>
+    </div>
+    <!-- CACAO -->
+    <div class="prod-card fade-up" onclick="openProductModal('cacao')" title="Voir le détail" style="cursor:pointer;">
+      <img class="prod-img" src="https://images.unsplash.com/photo-1756460134962-a2890033b968?w=400&q=80" alt="Poudre de Cacao">
+      <div class="prod-body">
+        <div class="prod-cat" data-fr="Produits Alimentaires" data-en="Food Products">Produits Alimentaires</div>
+        <div class="prod-name" data-fr="Poudre de Cacao" data-en="Cocoa Powder">Poudre de Cacao</div>
+        <p class="prod-desc" data-fr="Cacao de première qualité provenant des meilleures plantations. Parfait pour l'industrie chocolatière et alimentaire." data-en="First quality cocoa from the best plantations.">Cacao de première qualité provenant des meilleures plantations. Parfait pour l'industrie chocolatière et alimentaire.</p>
+        <div class="prod-origin" data-fr="Côte d'Ivoire" data-en="Côte d'Ivoire">Côte d'Ivoire</div>
+        <div class="prod-more"><span data-fr="Voir le détail" data-en="View details">Voir le détail</span> <span class="prod-more-arrow">→</span></div>
+      </div>
+    </div>
+    <!-- BAOBAB -->
+    <div class="prod-card fade-up" onclick="openProductModal('baobab')" title="Voir le détail" style="cursor:pointer;">
+      <img class="prod-img" src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&q=80" alt="Poudre de Baobab">
+      <div class="prod-body">
+        <div class="prod-cat" data-fr="Superaliments" data-en="Superfoods">Superaliments</div>
+        <div class="prod-name" data-fr="Poudre de Baobab" data-en="Baobab Powder">Poudre de Baobab</div>
+        <p class="prod-desc" data-fr="Superfruit africain riche en vitamines et antioxydants. Idéal pour les compléments alimentaires et boissons santé." data-en="African superfruit rich in vitamins and antioxidants.">Superfruit africain riche en vitamines et antioxydants. Idéal pour les compléments alimentaires et boissons santé.</p>
+        <div class="prod-origin" data-fr="Afrique de l'Ouest" data-en="West Africa">Afrique de l'Ouest</div>
+        <div class="prod-more"><span data-fr="Voir le détail" data-en="View details">Voir le détail</span> <span class="prod-more-arrow">→</span></div>
+      </div>
+    </div>
+    <!-- ANACARDE -->
+    <div class="prod-card fade-up" onclick="openProductModal('anacarde')" title="Voir le détail" style="cursor:pointer;">
+      <img class="prod-img" src="https://images.unsplash.com/photo-1627820752174-acae1b399128?w=400&q=80" alt="Anacarde">
+      <div class="prod-body">
+        <div class="prod-cat" data-fr="Produits Alimentaires" data-en="Food Products">Produits Alimentaires</div>
+        <div class="prod-name" data-fr="Anacarde (Noix de Cajou)" data-en="Cashew Nuts">Anacarde (Noix de Cajou)</div>
+        <p class="prod-desc" data-fr="Noix de cajou brutes de qualité supérieure. Production certifiée avec traçabilité complète." data-en="Premium raw cashew nuts. Certified production with full traceability.">Noix de cajou brutes de qualité supérieure. Production certifiée avec traçabilité complète.</p>
+        <div class="prod-origin" data-fr="Côte d'Ivoire" data-en="Côte d'Ivoire">Côte d'Ivoire</div>
+        <div class="prod-more"><span data-fr="Voir le détail" data-en="View details">Voir le détail</span> <span class="prod-more-arrow">→</span></div>
+      </div>
+    </div>
+    <!-- MANGANÈSE -->
+    <div class="prod-card fade-up" onclick="openProductModal('manganese')" title="Voir le détail" style="cursor:pointer;">
+      <img class="prod-img" src="https://images.unsplash.com/photo-1760651691848-e401abe6191b?w=400&q=80" alt="Manganèse">
+      <div class="prod-body">
+        <div class="prod-cat" data-fr="Minéraux" data-en="Minerals">Minéraux</div>
+        <div class="prod-name" data-fr="Manganèse" data-en="Manganese">Manganèse</div>
+        <p class="prod-desc" data-fr="Minerai de manganèse de haute pureté pour l'industrie sidérurgique et métallurgique." data-en="High purity manganese ore for the steel and metallurgical industry.">Minerai de manganèse de haute pureté pour l'industrie sidérurgique et métallurgique.</p>
+        <div class="prod-origin" data-fr="Afrique Centrale" data-en="Central Africa">Afrique Centrale</div>
+        <div class="prod-more"><span data-fr="Voir le détail" data-en="View details">Voir le détail</span> <span class="prod-more-arrow">→</span></div>
+      </div>
+    </div>
+    <!-- SÉSAME -->
+    <div class="prod-card fade-up" onclick="openProductModal('sesame')" title="Voir le détail" style="cursor:pointer;">
+      <img class="prod-img" src="https://images.unsplash.com/photo-1634582872934-be411573f235?w=400&q=80" alt="Sésame">
+      <div class="prod-body">
+        <div class="prod-cat" data-fr="Produits Alimentaires" data-en="Food Products">Produits Alimentaires</div>
+        <div class="prod-name" data-fr="Sésame" data-en="Sesame">Sésame</div>
+        <p class="prod-desc" data-fr="Graines de sésame blanc et noir, qualité export. Production bio disponible sur demande." data-en="White and black sesame seeds, export quality. Organic production available on request.">Graines de sésame blanc et noir, qualité export. Production bio disponible sur demande.</p>
+        <div class="prod-origin" data-fr="Afrique de l'Ouest" data-en="West Africa">Afrique de l'Ouest</div>
+        <div class="prod-more"><span data-fr="Voir le détail" data-en="View details">Voir le détail</span> <span class="prod-more-arrow">→</span></div>
+      </div>
+    </div>
+    <!-- COLTAN -->
+    <div class="prod-card fade-up" onclick="openProductModal('coltan')" title="Voir le détail" style="cursor:pointer;">
+      <img class="prod-img" src="https://images.unsplash.com/photo-1760651913970-98e38bd28f77?w=400&q=80" alt="Coltan">
+      <div class="prod-body">
+        <div class="prod-cat" data-fr="Minéraux" data-en="Minerals">Minéraux</div>
+        <div class="prod-name" data-fr="Coltan" data-en="Coltan">Coltan</div>
+        <p class="prod-desc" data-fr="Coltan de qualité industrielle, extraction responsable. Certification de conformité internationale." data-en="Industrial grade coltan, responsible extraction. International compliance certification.">Coltan de qualité industrielle, extraction responsable. Certification de conformité internationale.</p>
+        <div class="prod-origin" data-fr="Afrique Centrale" data-en="Central Africa">Afrique Centrale</div>
+        <div class="prod-more"><span data-fr="Voir le détail" data-en="View details">Voir le détail</span> <span class="prod-more-arrow">→</span></div>
+      </div>
+    </div>
+    <!-- SUR DEMANDE -->
+    <div class="prod-card fade-up">
+      <div class="prod-body" style="height:100%; display:flex; flex-direction:column; justify-content:center; padding:32px;">
+        <div class="prod-sur-demande">
+          <div class="sur-demande-icon">⚙️</div>
+          <div class="sur-demande-t" data-fr="Sur Demande" data-en="On Request">Sur Demande</div>
+          <div class="sur-demande-d" data-fr="Large gamme de matières premières africaines disponibles selon vos besoins spécifiques. Consultation personnalisée." data-en="Wide range of African raw materials available according to your specific needs.">Large gamme de matières premières africaines disponibles selon vos besoins spécifiques. Consultation personnalisée.</div>
+          <a href="#contact" style="display:inline-block; margin-top:14px; font-size:12px; font-weight:700; color:var(--green-main); text-decoration:none;" data-fr="Nous consulter →" data-en="Consult us →">Nous consulter →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="fade-up" style="max-width:580px;">
+    <div class="section-pre" data-fr="Nos services" data-en="Our services">Nos services</div>
+    <h2 class="section-h" data-fr="Solutions complètes de&lt;br&gt;négoce &amp; &lt;em&gt;logistique&lt;/em&gt;" data-en="Complete trade &amp;&lt;br&gt;&lt;em&gt;logistics&lt;/em&gt; solutions">Solutions complètes de<br>négoce &amp; <em>logistique</em></h2>
+  </div>
+  <div class="services-grid fade-up">
+    <div class="service-card">
+      <div class="svc-icon">🌍</div>
+      <div class="svc-title" data-fr="Négoce International" data-en="International Trade">Négoce International</div>
+      <p class="svc-desc" data-fr="Commerce de matières premières avec une expertise approfondie du marché africain. Nous assurons la qualité, la conformité et les meilleurs prix du marché." data-en="Commodity trading with deep expertise in the African market.">Commerce de matières premières avec une expertise approfondie du marché africain. Nous assurons la qualité, la conformité et les meilleurs prix du marché.</p>
+      <ul class="svc-list">
+        <li data-fr="Sourcing direct auprès des producteurs" data-en="Direct sourcing from producers">Sourcing direct auprès des producteurs</li>
+        <li data-fr="Contrôle qualité rigoureux" data-en="Rigorous quality control">Contrôle qualité rigoureux</li>
+        <li data-fr="Certification et documentation complète" data-en="Complete certification and documentation">Certification et documentation complète</li>
+        <li data-fr="Prix compétitifs sans intermédiaires" data-en="Competitive prices without intermediaries">Prix compétitifs sans intermédiaires</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">🚢</div>
+      <div class="svc-title" data-fr="Transport &amp; Logistique" data-en="Transport &amp; Logistics">Transport &amp; Logistique</div>
+      <p class="svc-desc" data-fr="Solutions logistiques complètes de la source à la destination finale. Transport terrestre, maritime et aérien avec suivi en temps réel." data-en="Complete logistics solutions from source to final destination.">Solutions logistiques complètes de la source à la destination finale. Transport terrestre, maritime et aérien avec suivi en temps réel.</p>
+      <ul class="svc-list">
+        <li data-fr="Transport multimodal (routier, maritime, aérien)" data-en="Multimodal transport (road, sea, air)">Transport multimodal (routier, maritime, aérien)</li>
+        <li data-fr="Stockage sécurisé · Dédouanement" data-en="Secure storage · Customs clearance">Stockage sécurisé · Dédouanement</li>
+        <li data-fr="Assurance marchandise" data-en="Cargo insurance">Assurance marchandise</li>
+        <li data-fr="Suivi temps réel de vos expéditions" data-en="Real-time shipment tracking">Suivi temps réel de vos expéditions</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="fade-up" style="text-align:center; max-width:560px; margin:0 auto;">
+    <div class="section-pre" style="justify-content:center;" data-fr="Comment ça marche" data-en="How it works">Comment ça marche</div>
+    <h2 class="section-h" data-fr="Un processus simple&lt;br&gt;et &lt;em&gt;transparent&lt;/em&gt;" data-en="A simple and&lt;br&gt;&lt;em&gt;transparent&lt;/em&gt; process">Un processus simple<br>et <em>transparent</em></h2>
+  </div>
+  <div class="process-steps fade-up">
+    <div class="proc-step">
+      <div class="proc-num">1</div>
+      <div class="proc-title" data-fr="Consultation" data-en="Consultation">Consultation</div>
+      <p class="proc-desc" data-fr="Contactez-nous pour discuter de vos besoins. Notre équipe analyse vos exigences et propose les meilleures solutions." data-en="Contact us to discuss your needs. Our team analyzes your requirements and proposes the best solutions.">Contactez-nous pour discuter de vos besoins. Notre équipe analyse vos exigences et propose les meilleures solutions.</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">2</div>
+      <div class="proc-title" data-fr="Devis &amp; Accord" data-en="Quote &amp; Agreement">Devis &amp; Accord</div>
+      <p class="proc-desc" data-fr="Recevez un devis détaillé et transparent. Nous finalisons ensemble les termes de la transaction." data-en="Receive a detailed and transparent quote. We finalize the transaction terms together.">Recevez un devis détaillé et transparent. Nous finalisons ensemble les termes de la transaction.</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">3</div>
+      <div class="proc-title" data-fr="Traitement" data-en="Processing">Traitement</div>
+      <p class="proc-desc" data-fr="Nous gérons le sourcing, le contrôle qualité et toute la documentation nécessaire." data-en="We manage sourcing, quality control, and all necessary documentation.">Nous gérons le sourcing, le contrôle qualité et toute la documentation nécessaire.</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">4</div>
+      <div class="proc-title" data-fr="Livraison" data-en="Delivery">Livraison</div>
+      <p class="proc-desc" data-fr="Transport sécurisé jusqu'à votre destination avec suivi complet et support continu." data-en="Secure transport to your destination with complete tracking and ongoing support.">Transport sécurisé jusqu'à votre destination avec suivi complet et support continu.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="fade-up" style="text-align:center; max-width:540px; margin:0 auto;">
+    <div class="section-pre" style="justify-content:center;" data-fr="Pourquoi nous choisir" data-en="Why choose us">Pourquoi nous choisir</div>
+    <h2 class="section-h" data-fr="Votre succès est&lt;br&gt;notre &lt;em&gt;priorité&lt;/em&gt;" data-en="Your success is&lt;br&gt;our &lt;em&gt;priority&lt;/em&gt;">Votre succès est<br>notre <em>priorité</em></h2>
+  </div>
+  <div class="why-grid fade-up">
+    <div class="why-card"><div class="why-icon">🎯</div><div class="why-title" data-fr="Expertise Locale" data-en="Local Expertise">Expertise Locale</div><p class="why-desc" data-fr="Connaissance approfondie du marché africain et des réseaux de producteurs établis depuis plus de 10 ans." data-en="Deep knowledge of the African market and established producer networks for over 10 years.">Connaissance approfondie du marché africain et des réseaux de producteurs établis depuis plus de 10 ans.</p></div>
+    <div class="why-card"><div class="why-icon">✅</div><div class="why-title" data-fr="Qualité Garantie" data-en="Guaranteed Quality">Qualité Garantie</div><p class="why-desc" data-fr="Contrôle qualité strict à chaque étape. Certifications internationales pour chaque produit." data-en="Strict quality control at every stage. International certifications for each product.">Contrôle qualité strict à chaque étape. Certifications internationales pour chaque produit.</p></div>
+    <div class="why-card"><div class="why-icon">💰</div><div class="why-title" data-fr="Prix Compétitifs" data-en="Competitive Pricing">Prix Compétitifs</div><p class="why-desc" data-fr="Sourcing direct sans intermédiaires superflus. Les meilleurs prix du marché pour vos approvisionnements." data-en="Direct sourcing without unnecessary intermediaries. Best market prices for your supplies.">Sourcing direct sans intermédiaires superflus. Les meilleurs prix du marché pour vos approvisionnements.</p></div>
+    <div class="why-card"><div class="why-icon">👥</div><div class="why-title" data-fr="Service Personnalisé" data-en="Personalized Service">Service Personnalisé</div><p class="why-desc" data-fr="Équipe dédiée à l'écoute de vos besoins spécifiques. Support disponible et réactif." data-en="Team dedicated to understanding your specific needs. Available and responsive support.">Équipe dédiée à l'écoute de vos besoins spécifiques. Support disponible et réactif.</p></div>
+    <div class="why-card"><div class="why-icon">🛡️</div><div class="why-title" data-fr="Logistique Fiable" data-en="Reliable Logistics">Logistique Fiable</div><p class="why-desc" data-fr="Solutions de transport complètes avec suivi en temps réel. Vos marchandises arrivent à temps et en parfait état." data-en="Complete transport solutions with real-time tracking.">Solutions de transport complètes avec suivi en temps réel. Vos marchandises arrivent à temps et en parfait état.</p></div>
+    <div class="why-card"><div class="why-icon">📋</div><div class="why-title" data-fr="Transparence Totale" data-en="Full Transparency">Transparence Totale</div><p class="why-desc" data-fr="Documentation complète et traçabilité de bout en bout. Vous savez exactement d'où vient chaque lot." data-en="Complete documentation and end-to-end traceability. You know exactly where every batch comes from.">Documentation complète et traçabilité de bout en bout. Vous savez exactement d'où vient chaque lot.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="fade-up" style="text-align:center; max-width:520px; margin:0 auto;">
+    <div class="section-pre" style="justify-content:center;" data-fr="Témoignages clients" data-en="Client testimonials">Témoignages clients</div>
+    <h2 class="section-h" data-fr="Ce que nos partenaires&lt;br&gt;disent de &lt;em&gt;nous&lt;/em&gt;" data-en="What our partners&lt;br&gt;say about &lt;em&gt;us&lt;/em&gt;">Ce que nos partenaires<br>disent de <em>nous</em></h2>
+  </div>
+  <div class="testi-grid fade-up">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Partenaire exceptionnel pour nos approvisionnements en karité certifié. La qualité est constante, la documentation irréprochable. Sidnie Group est notre fournisseur de référence pour le marché européen."</p>
+      <div class="testi-author"><div class="testi-avatar">J</div><div><div class="testi-name">Jean-Pierre Kouassi</div><div class="testi-role">Cosmetics Africa Ltd</div></div></div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"La poudre de cacao que nous importons via Sidnie Group est d'une qualité remarquable. Leur connaissance des filières africaines et leur sérieux opérationnel en font un partenaire de confiance absolu."</p>
+      <div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name">Marie Dubois</div><div class="testi-role">ChocoParis SAS</div></div></div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Pour nos besoins en minéraux industriels, Sidnie Group a su répondre avec des volumes et une conformité documentation que peu d'opérateurs africains peuvent offrir. Collaboration hautement recommandée."</p>
+      <div class="testi-author"><div class="testi-avatar">I</div><div><div class="testi-name">Ibrahim Traoré</div><div class="testi-role">CEO, West African Minerals</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-info fade-up">
+    <div class="section-pre" data-fr="Nous contacter" data-en="Contact us">Nous contacter</div>
+    <h2 class="section-h" data-fr="Démarrons ensemble&lt;br&gt;votre &lt;em&gt;prochain projet&lt;/em&gt;" data-en="Let's start your&lt;br&gt;&lt;em&gt;next project&lt;/em&gt; together">Démarrons ensemble<br>votre <em>prochain projet</em></h2>
+    <p class="contact-info-p" data-fr="Vous cherchez un partenaire fiable pour vos approvisionnements en matières premières africaines ? Contactez-nous pour un devis ou une consultation. Nous répondons sous 48 heures." data-en="Looking for a reliable partner for your African commodity supplies? Contact us for a quote or consultation. We respond within 48 hours.">Vous cherchez un partenaire fiable pour vos approvisionnements en matières premières africaines ? Contactez-nous pour un devis ou une consultation. Nous répondons sous 48 heures.</p>
+    <div class="contact-details">
+      <div class="cd-item"><div class="cd-icon">📍</div><div class="cd-text"><strong>Adresse</strong><span>Lot 2097 Riviera Palmeraie Ilot 3, Abidjan, Côte d'Ivoire</span></div></div>
+      <div class="cd-item"><div class="cd-icon">✉️</div><div class="cd-text"><strong>Email</strong><a href="mailto:contact@sidniegroup.com">contact@sidniegroup.com</a></div></div>
+      <div class="cd-item"><div class="cd-icon">📞</div><div class="cd-text"><strong>Téléphone</strong><a href="tel:+2250505660626">+225 05 05 66 06 26</a></div></div>
+      <div class="cd-item"><div class="cd-icon">🌐</div><div class="cd-text"><strong>Site web</strong><a href="https://www.sidniegroup.com">www.sidniegroup.com</a></div></div>
+    </div>
+    <a href="https://wa.me/2250505660626" target="_blank" class="whatsapp-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+      <span data-fr="Discuter sur WhatsApp" data-en="Chat on WhatsApp">Discuter sur WhatsApp</span>
+    </a>
+  </div>
+  <div class="fade-up">
+    <form class="contact-form" id="contactForm">
+      <div class="form-row">
+        <div class="fg"><label data-fr="Nom / Société" data-en="Name / Company">Nom / Société</label><input type="text" name="name" required placeholder="Votre nom ou société"></div>
+        <div class="fg"><label data-fr="Email professionnel" data-en="Professional email">Email professionnel</label><input type="email" name="email" required placeholder="votre@email.com"></div>
+      </div>
+      <div class="form-row">
+        <div class="fg">
+          <label data-fr="Produit d'intérêt" data-en="Product of interest">Produit d'intérêt</label>
+          <select name="product">
+            <option value="">Sélectionner...</option>
+            <option value="karite" data-fr="Beurre de Karité" data-en="Shea Butter">Beurre de Karité</option>
+            <option value="cacao" data-fr="Poudre de Cacao" data-en="Cocoa Powder">Poudre de Cacao</option>
+            <option value="baobab" data-fr="Poudre de Baobab" data-en="Baobab Powder">Poudre de Baobab</option>
+            <option value="anacarde" data-fr="Anacarde / Cajou" data-en="Cashew Nuts">Anacarde / Cajou</option>
+            <option value="manganese" data-fr="Manganèse" data-en="Manganese">Manganèse</option>
+            <option value="sesame" data-fr="Sésame" data-en="Sesame">Sésame</option>
+            <option value="coltan" data-fr="Coltan" data-en="Coltan">Coltan</option>
+            <option value="other" data-fr="Autre / Sur demande" data-en="Other / On request">Autre / Sur demande</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label data-fr="Type de demande" data-en="Request type">Type de demande</label>
+          <select name="type">
+            <option value="">Sélectionner...</option>
+            <option value="quote" data-fr="Demande de devis" data-en="Request a quote">Demande de devis</option>
+            <option value="sample" data-fr="Demande d'échantillon" data-en="Sample request">Demande d'échantillon</option>
+            <option value="partnership" data-fr="Partenariat" data-en="Partnership">Partenariat</option>
+            <option value="info" data-fr="Information" data-en="Information">Information</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg"><label data-fr="Message" data-en="Message">Message</label><textarea name="message" rows="4" placeholder="Décrivez votre besoin..."></textarea></div>
+      <button type="submit" class="btn-submit" data-fr="Envoyer le message" data-en="Send message">Envoyer le message</button>
+      <div class="form-success" id="formSuccess">
+        <strong>✓ Message envoyé !</strong>
+        <p style="margin-top:4px; font-size:13px;">Merci pour votre demande. Notre équipe vous répondra dans les 48 heures.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">
+        <a href="#hero" style="display:inline-block; background:rgba(255,255,255,0.12); border-radius:8px; padding:4px 8px;">
+          <img src="images/logo.png" alt="Sidnie Group" style="height:48px;width:auto;display:block;">
+        </a>
+      </div>
+      <p class="footer-desc" data-fr="Votre partenaire de confiance en négoce international et transport de matières premières africaines. Abidjan, Côte d'Ivoire." data-en="Your trusted partner in international trade and transport of African raw materials. Abidjan, Côte d'Ivoire.">Votre partenaire de confiance en négoce international et transport de matières premières africaines. Abidjan, Côte d'Ivoire.</p>
+    </div>
+    <div>
+      <div class="footer-col-title" data-fr="Produits" data-en="Products">Produits</div>
+      <ul class="footer-links">
+        <li><a href="#products" data-fr="Beurre de Karité" data-en="Shea Butter">Beurre de Karité</a></li>
+        <li><a href="#products" data-fr="Poudre de Cacao" data-en="Cocoa Powder">Poudre de Cacao</a></li>
+        <li><a href="#products" data-fr="Anacarde" data-en="Cashew Nuts">Anacarde</a></li>
+        <li><a href="#products" data-fr="Manganèse · Coltan" data-en="Manganese · Coltan">Manganèse · Coltan</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title" data-fr="Services" data-en="Services">Services</div>
+      <ul class="footer-links">
+        <li><a href="#services" data-fr="Négoce International" data-en="International Trade">Négoce International</a></li>
+        <li><a href="#services" data-fr="Transport &amp; Logistique" data-en="Transport &amp; Logistics">Transport &amp; Logistique</a></li>
+        <li><a href="#process" data-fr="Comment ça marche" data-en="How it works">Comment ça marche</a></li>
+        <li><a href="#why" data-fr="Pourquoi nous" data-en="Why us">Pourquoi nous</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title" data-fr="Contact" data-en="Contact">Contact</div>
+      <ul class="footer-links">
+        <li><a href="mailto:contact@sidniegroup.com">contact@sidniegroup.com</a></li>
+        <li><a href="tel:+2250505660626">+225 05 05 66 06 26</a></li>
+        <li><a href="https://wa.me/2250505660626" target="_blank">WhatsApp</a></li>
+        <li><a href="https://www.sidniegroup.com">www.sidniegroup.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 The Sidnie Group · Abidjan, Côte d'Ivoire · Tous droits réservés</div>
+    <a href="https://wa.me/2250505660626" target="_blank" style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.4);font-size:12px;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#25D366'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</footer>
+
+<script>
+// LANGUAGE
+let lang = 'fr';
+function setLang(l) {
+  lang = l;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll(`.lang-btn[onclick="setLang('${l}')"]`).forEach(b => b.classList.add('active'));
+  document.documentElement.lang = l;
+  document.querySelectorAll('[data-fr]').forEach(el => {
+    const val = el.getAttribute('data-' + l);
+    if (!val) return;
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') { el.placeholder = val; }
+    else if (el.tagName === 'OPTION') { el.textContent = val; }
+    else if (val.includes('<')) { el.innerHTML = val; }
+    else { el.textContent = val; }
+  });
+  document.querySelector('.prod-card.featured').setAttribute('data-badge', l === 'fr' ? '⭐ PRODUIT PHARE' : '⭐ FLAGSHIP PRODUCT');
+  document.title = l === 'fr' ? 'Sidnie Group — Négoce & Transport de Matières Premières Africaines' : 'Sidnie Group — African Commodity Trading & Transport';
+}
+
+// NAV SCROLL
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// HAMBURGER MENU
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+function closeMob() {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// FADE UP OBSERVER
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('vis'), i * 80);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+// PRODUCT MODAL ENGINE
+const PRODUCTS = {
+  karite: {
+    img: 'https://images.unsplash.com/photo-1732377448751-bb44ea81c5ac?w=1200&q=80',
+    tag: { fr: 'PRODUIT PHARE · COSMOS ORGANIC · FAIR TRADE', en: 'FLAGSHIP PRODUCT · COSMOS ORGANIC · FAIR TRADE' },
+    title: { fr: 'Beurre de Karité<br><em>Certifié Grade A</em>', en: 'Shea Butter<br><em>Certified Grade A</em>' },
+    intro: { fr: "Le beurre de karité est notre produit phare. Sourcé directement auprès de coopératives féminines certifiées au Burkina Faso et au Ghana, il répond aux exigences les plus strictes des marchés cosmétiques et alimentaires d'Europe, des États-Unis et d'Asie.", en: "Shea butter is our flagship product. Sourced directly from certified women's cooperatives in Burkina Faso and Ghana, it meets the strictest requirements of cosmetic and food markets in Europe, the United States, and Asia." },
+    specs: { fr: ['Karité brut non raffiné Grade A', 'FFA (Acides Gras Libres) < 3%', 'Humidité < 0,5% · Impuretés < 0,5%', 'Couleur ivoire naturel · Arôme noix authentique', 'COA laboratoire accrédité ISO 17025 (Bureau Veritas / SGS)', 'Conditionnement : fûts 25 kg ou big bags 500–1 000 kg'], en: ['Raw unrefined shea butter Grade A', 'FFA (Free Fatty Acids) < 3%', 'Moisture < 0.5% · Impurities < 0.5%', 'Natural ivory color · Authentic nutty aroma', 'COA from ISO 17025 accredited laboratory', 'Packaging: 25 kg drums or 500–1,000 kg big bags'] },
+    advantages: { fr: ['Sourcing direct coopératives certifiées — 0 intermédiaire', "Traçabilité complète de la coopérative au fût d'export", 'Gestion documentaire export complète (NOP Import Certificate USA, FSSAI Inde)', 'Paiement sécurisé : 50% acompte + LC confirmée à vue', 'Prime Fair Trade reversée directement aux femmes productrices', 'Délai livraison FOB Abidjan : 21 jours ouvrés'], en: ['Direct sourcing from certified cooperatives — 0 intermediaries', 'Full traceability from cooperative to export drum', 'Full export documentation (US NOP Import Certificate, India FSSAI)', 'Secure payment: 50% advance + confirmed sight LC', 'Fair Trade premium paid directly to women producers', 'FOB Abidjan delivery: 21 working days'] },
+    certifs: [{ icon: '🌿', name: 'COSMOS Organic', desc: { fr: "Certifié Ecocert Greenlife. Ouvre toute l'UE, UK et marchés premium.", en: 'Certified by Ecocert Greenlife. Opens all EU, UK and premium markets.' } }, { icon: '⚖️', name: 'Fair for Life', desc: { fr: 'Commerce équitable Ecocert. Prime sociale versée aux coopératives.', en: 'Ecocert fair trade. Social premium paid to cooperatives.' } }, { icon: '🇺🇸', name: 'USDA Organic NOP', desc: { fr: 'NOP Import Certificate par expédition. Règle SOE 2024 conforme.', en: 'NOP Import Certificate per shipment. 2024 SOE rule compliant.' } }],
+    markets: [{ flag: '🇫🇷', fr: 'France · Cosm. premium', en: 'France · Premium cosmetics' }, { flag: '🇩🇪', fr: 'Allemagne · Naturkosmetik', en: 'Germany · Natural cosmetics' }, { flag: '🇺🇸', fr: 'USA · Naturel & Fair Trade', en: 'USA · Natural & Fair Trade' }, { flag: '🇬🇧', fr: 'UK · Éthique & Bio', en: 'UK · Ethical & Organic' }, { flag: '🇮🇳', fr: 'Inde · CBE & Cosm.', en: 'India · CBE & Cosmetics' }],
+    cta: { title: { fr: 'Intéressé par notre karité certifié ?', en: 'Interested in our certified shea butter?' }, desc: { fr: 'Demandez un échantillon gratuit ou un devis export — réponse sous 48h.', en: 'Request a free sample or an export quote — reply within 48h.' }, sample: { fr: 'Demander un échantillon', en: 'Request a sample' } }
+  },
+  cacao: {
+    img: 'https://images.unsplash.com/photo-1756460134962-a2890033b968?w=1200&q=80',
+    tag: { fr: 'PRODUITS ALIMENTAIRES · QUALITÉ EXPORT', en: 'FOOD PRODUCTS · EXPORT QUALITY' },
+    title: { fr: "Poudre de Cacao<br><em>Côte d'Ivoire</em>", en: "Cocoa Powder<br><em>Côte d'Ivoire</em>" },
+    intro: { fr: "Le cacao ivoirien est reconnu mondialement pour son arôme exceptionnel. Sidnie Group sélectionne les meilleures plantations de Côte d'Ivoire pour vous proposer une poudre de cacao de première qualité, idéale pour l'industrie chocolatière, pâtissière et alimentaire.", en: "Ivorian cocoa is globally recognized for its exceptional aroma. Sidnie Group selects the best plantations in Côte d'Ivoire to offer first-quality cocoa powder, ideal for the chocolate, pastry and food industries." },
+    specs: { fr: ['Poudre de cacao naturelle et alcalinisée', 'Taux de beurre de cacao : 10–12% ou 22–24%', 'Humidité < 5% · pH 6,8–7,2', 'Couleur brun intense · Arôme chocolaté prononcé', 'Granulométrie fine pour dissolution optimale', 'Conditionnement : sacs kraft 25 kg ou big bags'], en: ['Natural and alkalized cocoa powder', 'Cocoa butter content: 10–12% or 22–24%', 'Moisture < 5% · pH 6.8–7.2', 'Deep brown color · Pronounced chocolate aroma', 'Fine granulometry for optimal dissolution', 'Packaging: 25 kg kraft bags or big bags'] },
+    advantages: { fr: ['Sourcing direct dans les meilleures coopératives ivoiriennes', 'Certification UTZ / Rainforest Alliance disponible', 'Contrôle qualité Bureau Veritas / SGS', 'Documentation export complète', 'Expédition FOB Abidjan ou CIF port de destination', 'Délai livraison : 15–21 jours ouvrés'], en: ['Direct sourcing from top Ivorian cooperatives', 'UTZ / Rainforest Alliance certification available', 'Bureau Veritas / SGS quality control', 'Complete export documentation', 'FOB Abidjan or CIF destination port shipment', 'Delivery: 15–21 working days'] },
+    certifs: [{ icon: '🌱', name: 'UTZ Certified', desc: { fr: 'Agriculture durable et responsable. Certification reconnue mondialement.', en: 'Sustainable and responsible agriculture. Globally recognized certification.' } }, { icon: '🌿', name: 'Rainforest Alliance', desc: { fr: 'Protection des écosystèmes. Conditions de travail équitables.', en: 'Ecosystem protection. Fair working conditions.' } }, { icon: '📋', name: 'SGS / Bureau Veritas', desc: { fr: 'Contrôle qualité indépendant à chaque lot exporté.', en: 'Independent quality control on every exported batch.' } }],
+    markets: [{ flag: '🇫🇷', fr: 'France · Chocolaterie', en: 'France · Chocolate industry' }, { flag: '🇧🇪', fr: 'Belgique · Pralinerie', en: 'Belgium · Confectionery' }, { flag: '🇳🇱', fr: 'Pays-Bas · Négoce', en: 'Netherlands · Trading' }, { flag: '🇩🇪', fr: 'Allemagne · Industrie alimentaire', en: 'Germany · Food industry' }, { flag: '🇨🇳', fr: 'Chine · Confiserie', en: 'China · Confectionery' }],
+    cta: { title: { fr: 'Intéressé par notre cacao ivoirien ?', en: 'Interested in our Ivorian cocoa?' }, desc: { fr: 'Demandez un échantillon ou un devis export — réponse sous 48h.', en: 'Request a sample or export quote — reply within 48h.' }, sample: { fr: 'Demander un échantillon', en: 'Request a sample' } }
+  },
+  baobab: {
+    img: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=1200&q=80',
+    tag: { fr: 'SUPERALIMENT AFRICAIN · CERTIFIABLE BIO', en: "AFRICAN SUPERFOOD · ORGANIC CERTIFIABLE" },
+    title: { fr: "Poudre de Baobab<br><em>Superfruit d'Afrique</em>", en: 'Baobab Powder<br><em>African Superfruit</em>' },
+    intro: { fr: "La poudre de baobab est l'un des superaliments les plus concentrés d'Afrique. Issue du fruit de l'arbre de vie, elle est naturellement riche en vitamine C, calcium, fibres et antioxydants. Idéale pour les compléments alimentaires, boissons santé et produits cosmétiques.", en: "Baobab powder is one of Africa's most concentrated superfoods. Derived from the fruit of the tree of life, it is naturally rich in vitamin C, calcium, fiber and antioxidants. Ideal for dietary supplements, health drinks and cosmetic products." },
+    specs: { fr: ['Poudre 100% naturelle, non transformée', 'Vitamine C : 280–300 mg/100g', 'Calcium : 295 mg/100g · Fibres : 44%', 'pH naturellement acide (2,5–3,5)', 'Humidité < 8% · Granulométrie 200 mesh', 'Conditionnement : sacs 1 kg, 5 kg ou 25 kg'], en: ['100% natural powder, unprocessed', 'Vitamin C: 280–300 mg/100g', 'Calcium: 295 mg/100g · Fiber: 44%', 'Naturally acidic pH (2.5–3.5)', 'Moisture < 8% · Granulometry 200 mesh', 'Packaging: 1 kg, 5 kg or 25 kg bags'] },
+    advantages: { fr: ['Récolte sauvage durable — aucune déforestation', 'Certification bio disponible (Ecocert)', 'Haute valeur nutritionnelle naturelle sans additifs', "Traçabilité de l'arbre au sac d'export", 'Documentation EFSA (Novel Food) disponible', 'Délai livraison : 15–21 jours ouvrés'], en: ['Sustainable wild harvest — no deforestation', 'Organic certification available (Ecocert)', 'High natural nutritional value without additives', 'Traceability from tree to export bag', 'EFSA (Novel Food) documentation available', 'Delivery: 15–21 working days'] },
+    certifs: [{ icon: '🌿', name: 'Ecocert Organic', desc: { fr: 'Certification bio disponible sur demande.', en: 'Organic certification available on request.' } }, { icon: '🌳', name: 'Wild Harvest', desc: { fr: 'Récolte durable des arbres sauvages. Zéro déforestation.', en: 'Sustainable harvest from wild trees. Zero deforestation.' } }, { icon: '🇪🇺', name: 'Novel Food EFSA', desc: { fr: 'Statut Novel Food UE approuvé pour le marché européen.', en: 'EU Novel Food status approved for the European market.' } }],
+    markets: [{ flag: '🇬🇧', fr: 'UK · Nutraceutiques', en: 'UK · Nutraceuticals' }, { flag: '🇩🇪', fr: 'Allemagne · Bio-marché', en: 'Germany · Organic market' }, { flag: '🇫🇷', fr: 'France · Compléments alimentaires', en: 'France · Food supplements' }, { flag: '🇺🇸', fr: 'USA · Superaliments', en: 'USA · Superfoods' }, { flag: '🇦🇺', fr: 'Australie · Health food', en: 'Australia · Health food' }],
+    cta: { title: { fr: 'Intéressé par notre poudre de baobab ?', en: 'Interested in our baobab powder?' }, desc: { fr: 'Demandez un échantillon ou un devis export — réponse sous 48h.', en: 'Request a sample or export quote — reply within 48h.' }, sample: { fr: 'Demander un échantillon', en: 'Request a sample' } }
+  },
+  anacarde: {
+    img: 'https://images.unsplash.com/photo-1627820752174-acae1b399128?w=1200&q=80',
+    tag: { fr: 'PRODUITS ALIMENTAIRES · QUALITÉ EXPORT', en: 'FOOD PRODUCTS · EXPORT QUALITY' },
+    title: { fr: 'Anacarde<br><em>Noix de Cajou Premium</em>', en: 'Cashew Nuts<br><em>Premium Grade</em>' },
+    intro: { fr: "La Côte d'Ivoire est le premier producteur mondial d'anacarde brut. Sidnie Group sélectionne les meilleures noix de cajou brutes (RCN) avec une traçabilité complète, répondant aux exigences des marchés asiatiques et européens.", en: "Côte d'Ivoire is the world's largest producer of raw cashew nuts. Sidnie Group selects premium raw cashew nuts (RCN) with complete traceability, meeting the requirements of Asian and European markets." },
+    specs: { fr: ['Anacarde brut non décortiqué (RCN)', 'KOR (Kernel Out-turn Ratio) : 46–50 lbs minimum', 'Humidité : 8–10% · Calibre : 180–200 noix/kg', 'Couleur gris naturel · Sans moisissure', 'Conditionnement : sacs jute 80 kg', 'Normes AFCAS et CASHEW COAST respectées'], en: ['Raw unshelled cashew nuts (RCN)', 'KOR (Kernel Out-turn Ratio): 46–50 lbs minimum', 'Moisture: 8–10% · Size: 180–200 nuts/kg', 'Natural grey color · Mold-free', 'Packaging: 80 kg jute bags', 'AFCAS and CASHEW COAST standards met'] },
+    advantages: { fr: ["Premier producteur mondial — sourcing direct en Côte d'Ivoire", 'Contrôle qualité par inspection agréée', 'Pesée officielle Société Générale de Surveillance (SGS)', 'Expédition FOB San Pedro ou Abidjan', 'Documentation phytosanitaire complète', 'Délai livraison : 21–30 jours ouvrés'], en: ["World's #1 producer — direct sourcing in Côte d'Ivoire", 'Quality control by approved inspector', 'Official weighing by SGS', 'Shipment FOB San Pedro or Abidjan', 'Complete phytosanitary documentation', 'Delivery: 21–30 working days'] },
+    certifs: [{ icon: '📋', name: 'SGS Inspection', desc: { fr: 'Pesée et inspection officielle à chaque lot.', en: 'Official weighing and inspection on every batch.' } }, { icon: '🌱', name: 'AFCAS Standards', desc: { fr: "Conformité aux normes de l'Association des exportateurs.", en: "Compliance with exporters' association standards." } }, { icon: '🛳️', name: 'FOB Certifié', desc: { fr: 'Documentation FOB complète. Port de San Pedro ou Abidjan.', en: 'Complete FOB documentation. Port of San Pedro or Abidjan.' } }],
+    markets: [{ flag: '🇮🇳', fr: 'Inde · Transformation', en: 'India · Processing' }, { flag: '🇻🇳', fr: 'Vietnam · Export', en: 'Vietnam · Export' }, { flag: '🇨🇳', fr: 'Chine · Agro-industrie', en: 'China · Agro-industry' }, { flag: '🇳🇱', fr: 'Pays-Bas · Négoce', en: 'Netherlands · Trading' }, { flag: '🇩🇪', fr: 'Allemagne · Snacking', en: 'Germany · Snacking' }],
+    cta: { title: { fr: 'Intéressé par nos noix de cajou ?', en: 'Interested in our cashew nuts?' }, desc: { fr: 'Demandez un devis export ou un certificat qualité — réponse sous 48h.', en: 'Request an export quote or quality certificate — reply within 48h.' }, sample: { fr: 'Demander un devis', en: 'Request a quote' } }
+  },
+  manganese: {
+    img: 'https://images.unsplash.com/photo-1760651691848-e401abe6191b?w=1200&q=80',
+    tag: { fr: 'MINÉRAUX · INDUSTRIE SIDÉRURGIQUE', en: 'MINERALS · STEEL INDUSTRY' },
+    title: { fr: 'Minerai de Manganèse<br><em>Haute Pureté</em>', en: 'Manganese Ore<br><em>High Purity</em>' },
+    intro: { fr: "Le manganèse est un minéral stratégique indispensable à la production d'acier. Sidnie Group commercialise du minerai de manganèse de haute pureté extrait de gisements africains certifiés, avec une documentation complète de conformité internationale.", en: 'Manganese is a strategic mineral essential for steel production. Sidnie Group trades high-purity manganese ore extracted from certified African deposits, with complete international compliance documentation.' },
+    specs: { fr: ['Teneur en Mn : 40–48%', 'SiO₂ < 8% · Al₂O₃ < 5% · P < 0,1%', 'Taille : 10–80 mm (lump) ou < 6 mm (fines)', 'Humidité < 12%', 'Analyse XRF par laboratoire accrédité', 'Conditionnement : vrac ou big bags 1 tonne'], en: ['Mn content: 40–48%', 'SiO₂ < 8% · Al₂O₃ < 5% · P < 0.1%', 'Size: 10–80 mm (lump) or < 6 mm (fines)', 'Moisture < 12%', 'XRF analysis by accredited laboratory', 'Packaging: bulk or 1-ton big bags'] },
+    advantages: { fr: ['Sourcing direct gisements Afrique Centrale et Ouest', 'Analyse chimique XRF indépendante à chaque lot', 'Documentation : SGS, Bureau Veritas ou équivalent', "Expédition en vrac FOB port d'Afrique de l'Ouest", 'Conformité aux normes ASTM et ISO', 'Délai livraison : 30–45 jours selon volume'], en: ['Direct sourcing from Central and West African deposits', 'Independent XRF chemical analysis on each batch', 'Documentation: SGS, Bureau Veritas or equivalent', 'Bulk shipment FOB West African port', 'Compliance with ASTM and ISO standards', 'Delivery: 30–45 days depending on volume'] },
+    certifs: [{ icon: '🔬', name: 'XRF Analysis', desc: { fr: 'Analyse chimique indépendante à chaque lot expédié.', en: 'Independent chemical analysis on every shipment.' } }, { icon: '📋', name: 'SGS / BV', desc: { fr: 'Inspection de poids et qualité par organisme tiers.', en: 'Weight and quality inspection by third party.' } }, { icon: '⚙️', name: 'ASTM / ISO', desc: { fr: 'Conformité aux normes sidérurgiques internationales.', en: 'Compliance with international steel industry standards.' } }],
+    markets: [{ flag: '🇨🇳', fr: 'Chine · Sidérurgie', en: 'China · Steel industry' }, { flag: '🇮🇳', fr: 'Inde · Métallurgie', en: 'India · Metallurgy' }, { flag: '🇰🇷', fr: 'Corée du Sud · Acier', en: 'South Korea · Steel' }, { flag: '🇩🇪', fr: 'Allemagne · Industrie', en: 'Germany · Industry' }, { flag: '🇯🇵', fr: 'Japon · Manufacture', en: 'Japan · Manufacturing' }],
+    cta: { title: { fr: 'Intéressé par notre manganèse ?', en: 'Interested in our manganese?' }, desc: { fr: 'Contactez-nous pour un devis et une fiche technique complète — réponse sous 48h.', en: 'Contact us for a quote and complete technical sheet — reply within 48h.' }, sample: { fr: 'Demander une fiche technique', en: 'Request technical sheet' } }
+  },
+  sesame: {
+    img: 'https://images.unsplash.com/photo-1634582872934-be411573f235?w=1200&q=80',
+    tag: { fr: 'PRODUITS ALIMENTAIRES · BIO DISPONIBLE', en: 'FOOD PRODUCTS · ORGANIC AVAILABLE' },
+    title: { fr: 'Graines de Sésame<br><em>Blanc &amp; Noir</em>', en: 'Sesame Seeds<br><em>White &amp; Black</em>' },
+    intro: { fr: "Le sésame africain est reconnu pour sa pureté et sa haute teneur en huile. Sidnie Group commercialise des graines de sésame blanc et noir, qualité export, avec certification biologique disponible sur demande. Idéal pour l'industrie alimentaire, les huiles végétales et les marchés asiatiques.", en: "African sesame is recognized for its purity and high oil content. Sidnie Group trades white and black sesame seeds, export quality, with organic certification available on request. Ideal for the food industry, vegetable oils and Asian markets." },
+    specs: { fr: ['Sésame blanc naturel ou décortiqué', 'Pureté : 99,95% minimum', 'Huile : 50–55% · Humidité < 6%', 'Impuretés < 0,05% · Sans OGM', 'Conditionnement : sacs PP 25 kg ou 50 kg', 'Certification biologique disponible (Ecocert)'], en: ['Natural or hulled white sesame', 'Purity: 99.95% minimum', 'Oil content: 50–55% · Moisture < 6%', 'Impurities < 0.05% · Non-GMO', 'Packaging: PP bags 25 kg or 50 kg', 'Organic certification available (Ecocert)'] },
+    advantages: { fr: ['Pureté exceptionnelle 99,95%+ garantie', "Origine Afrique de l'Ouest certifiée", 'Certification bio Ecocert disponible', 'Contrôle pesticides et mycotoxines', 'Analyse SGS ou Bureau Veritas à chaque lot', 'Délai livraison : 21–30 jours ouvrés'], en: ['Exceptional purity 99.95%+ guaranteed', 'Certified West African origin', 'Ecocert organic certification available', 'Pesticide and mycotoxin control', 'SGS or Bureau Veritas analysis on every batch', 'Delivery: 21–30 working days'] },
+    certifs: [{ icon: '🌿', name: 'Ecocert Bio', desc: { fr: 'Certification biologique disponible sur demande.', en: 'Organic certification available on request.' } }, { icon: '🧪', name: 'Analyse SGS', desc: { fr: 'Contrôle pesticides, mycotoxines et pureté à chaque lot.', en: 'Pesticide, mycotoxin and purity control on every batch.' } }, { icon: '🚫', name: 'Non-OGM', desc: { fr: 'Produit garanti sans organismes génétiquement modifiés.', en: 'Product guaranteed free from genetically modified organisms.' } }],
+    markets: [{ flag: '🇨🇳', fr: 'Chine · Huile de sésame', en: 'China · Sesame oil' }, { flag: '🇯🇵', fr: 'Japon · Alimentation', en: 'Japan · Food industry' }, { flag: '🇰🇷', fr: 'Corée du Sud · Condiments', en: 'South Korea · Condiments' }, { flag: '🇩🇪', fr: 'Allemagne · Bio-marché', en: 'Germany · Organic market' }, { flag: '🇲🇪', fr: 'Moyen-Orient · Tahini', en: 'Middle East · Tahini' }],
+    cta: { title: { fr: 'Intéressé par notre sésame africain ?', en: 'Interested in our African sesame?' }, desc: { fr: 'Demandez un échantillon ou un devis export — réponse sous 48h.', en: 'Request a sample or export quote — reply within 48h.' }, sample: { fr: 'Demander un échantillon', en: 'Request a sample' } }
+  },
+  coltan: {
+    img: 'https://images.unsplash.com/photo-1760651913970-98e38bd28f77?w=1200&q=80',
+    tag: { fr: 'MINÉRAUX STRATÉGIQUES · EXTRACTION RESPONSABLE', en: 'STRATEGIC MINERALS · RESPONSIBLE EXTRACTION' },
+    title: { fr: 'Coltan<br><em>Qualité Industrielle</em>', en: 'Coltan<br><em>Industrial Grade</em>' },
+    intro: { fr: "Le coltan (colombo-tantalite) est un minerai stratégique contenant du niobium et du tantale, indispensables à la fabrication d'électronique, batteries et alliages spéciaux. Sidnie Group assure un approvisionnement responsable avec traçabilité complète et conformité internationale.", en: 'Coltan (columbite-tantalite) is a strategic ore containing niobium and tantalum, essential for the manufacture of electronics, batteries and special alloys. Sidnie Group ensures responsible supply with complete traceability and international compliance.' },
+    specs: { fr: ['Teneur Ta₂O₅ : 20–40% selon gisement', 'Teneur Nb₂O₅ : variable selon origine', 'Forme : concentré minéral en poudre/granules', 'Pureté certifiée par analyse XRF/ICP', 'Conditionnement : fûts métalliques homologués', 'Documentation OCDE et Dodd-Frank Act conforme'], en: ['Ta₂O₅ content: 20–40% depending on deposit', 'Nb₂O₅ content: variable by origin', 'Form: mineral concentrate in powder/granules', 'Purity certified by XRF/ICP analysis', 'Packaging: approved metal drums', 'OECD and Dodd-Frank Act compliant documentation'] },
+    advantages: { fr: ['Extraction responsable — conformité ICGLR (Conférence Internationale sur la Région des Grands Lacs)', 'Traçabilité minérale certifiée (Tin Supply Chain Initiative)', 'Documentation Dodd-Frank Act Section 1502 complète', "Analyse ICP-MS par laboratoire accrédité", 'Accompagnement réglementaire complet à l\'export', 'Délai livraison : sur mesure selon volume'], en: ['Responsible extraction — ICGLR compliance (International Conference on the Great Lakes Region)', 'Certified mineral traceability (Tin Supply Chain Initiative)', 'Complete Dodd-Frank Act Section 1502 documentation', 'ICP-MS analysis by accredited laboratory', 'Full regulatory export support', 'Delivery: tailored to volume'] },
+    certifs: [{ icon: '🌍', name: 'ICGLR Conforme', desc: { fr: 'Conformité aux standards régionaux Grands Lacs africains.', en: 'Compliance with African Great Lakes regional standards.' } }, { icon: '📋', name: 'Dodd-Frank 1502', desc: { fr: 'Documentation conforme à la réglementation américaine sur les minerais de conflits.', en: 'Documentation compliant with US conflict minerals regulations.' } }, { icon: '🔬', name: 'ICP-MS Analysis', desc: { fr: 'Analyse chimique haute précision à chaque lot exporté.', en: 'High-precision chemical analysis on every exported batch.' } }],
+    markets: [{ flag: '🇩🇪', fr: 'Allemagne · Électronique', en: 'Germany · Electronics' }, { flag: '🇺🇸', fr: 'USA · High-tech', en: 'USA · High-tech' }, { flag: '🇯🇵', fr: 'Japon · Semi-conducteurs', en: 'Japan · Semiconductors' }, { flag: '🇨🇳', fr: 'Chine · Batteries', en: 'China · Batteries' }, { flag: '🇰🇷', fr: 'Corée du Sud · Électronique', en: 'South Korea · Electronics' }],
+    cta: { title: { fr: 'Intéressé par notre coltan responsable ?', en: 'Interested in our responsible coltan?' }, desc: { fr: 'Contactez-nous pour un devis et la documentation de conformité — réponse sous 48h.', en: 'Contact us for a quote and compliance documentation — reply within 48h.' }, sample: { fr: 'Demander un devis', en: 'Request a quote' } }
+  }
+};
+
+function openProductModal(id) {
+  const p = PRODUCTS[id];
+  if (!p) return;
+  const l = lang;
+  document.getElementById('modal-img').src = p.img;
+  document.getElementById('modal-img').alt = p.title[l].replace(/<[^>]+>/g, '');
+  document.getElementById('modal-tag').textContent = p.tag[l];
+  document.getElementById('modal-title').innerHTML = p.title[l];
+  document.getElementById('modal-intro').textContent = p.intro[l];
+  document.getElementById('modal-specs-label').textContent = l === 'fr' ? 'Caractéristiques techniques' : 'Technical specifications';
+  document.getElementById('modal-specs-list').innerHTML = p.specs[l].map(s => '<li>' + s + '</li>').join('');
+  document.getElementById('modal-adv-label').textContent = l === 'fr' ? 'Notre avantage concurrentiel' : 'Our competitive advantage';
+  document.getElementById('modal-adv-list').innerHTML = p.advantages[l].map(s => '<li>' + s + '</li>').join('');
+  const cs = document.getElementById('modal-certif-section');
+  if (p.certifs && p.certifs.length) {
+    cs.style.display = '';
+    document.getElementById('modal-certif-label').textContent = l === 'fr' ? 'Certifications' : 'Certifications';
+    document.getElementById('modal-certif-boxes').innerHTML = p.certifs.map(c => '<div class="certif-box"><div style="font-size:28px;margin-bottom:10px;">' + c.icon + '</div><div class="certif-box-name">' + c.name + '</div><div class="certif-box-desc">' + c.desc[l] + '</div></div>').join('');
+  } else { cs.style.display = 'none'; }
+  document.getElementById('modal-markets-label').textContent = l === 'fr' ? 'Marchés cibles' : 'Target markets';
+  document.getElementById('modal-markets').innerHTML = p.markets.map(m => '<div class="mkt-chip">' + m.flag + ' <span>' + m[l] + '</span></div>').join('');
+  document.getElementById('modal-cta-title').textContent = p.cta.title[l];
+  document.getElementById('modal-cta-desc').textContent = p.cta.desc[l];
+  document.getElementById('modal-sample-btn').textContent = p.cta.sample[l];
+  document.getElementById('modal-wa-btn').textContent = 'WhatsApp';
+  const modal = document.getElementById('product-modal');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeProductModal() {
+  document.getElementById('product-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalOut(e) {
+  if (e.target === document.getElementById('product-modal')) closeProductModal();
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProductModal(); });
+
+// FORM
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const data = new FormData(this);
+  const body = `Nom/Société: ${data.get('name')}\nEmail: ${data.get('email')}\nProduit: ${data.get('product')}\nType: ${data.get('type')}\nMessage: ${data.get('message')}`;
+  window.location.href = `mailto:contact@sidniegroup.com?subject=Demande - Sidnie Group&body=${encodeURIComponent(body)}`;
+  document.getElementById('formSuccess').style.display = 'block';
+  this.querySelector('.btn-submit').style.display = 'none';
+});
+</script>
+</body>
+</html>
